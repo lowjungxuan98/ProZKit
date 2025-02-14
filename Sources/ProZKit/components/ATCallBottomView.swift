@@ -8,10 +8,6 @@ import UIKit
 
 public class ATCallBottomView: UIView {
     
-    public enum ButtonType {
-        case mute, endCall, switchCamera
-    }
-    
     public let clinicNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -268,5 +264,15 @@ public class ATCallBottomView: UIView {
     @objc private func handleSwitchCameraButton() {
         PrettyLogger.info("Switch Camera Button Tapped")
         camera?()
+    }
+    
+    public func setViewController(_ viewController: UIViewController) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        viewController.view.addSubview(self)
+        NSLayoutConstraint.activate([
+            self.leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor),
+            self.trailingAnchor.constraint(equalTo: viewController.view.trailingAnchor),
+            self.bottomAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
 }
