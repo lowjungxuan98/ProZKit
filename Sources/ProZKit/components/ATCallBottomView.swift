@@ -199,7 +199,7 @@ public class ATCallBottomView: UIView {
     }
     
     public func configureInfo(clinicName: String?, doctorName: String?, doctorNumber: String?) {
-        self.clinicNameLabel.text = nil
+        self.clinicNameLabel.text = clinicName
         if let dName = doctorName, !dName.isEmpty, let dNumber = doctorNumber, !dNumber.isEmpty {
             self.doctorNameLabel.text = dName
             self.doctorMCRLabel.text = dNumber
