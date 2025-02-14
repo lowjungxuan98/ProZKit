@@ -1,6 +1,3 @@
-Below is an example of a README.md file you might add to your ProZKit repository. You can copy the content into your README.md file in the root directory of your package.
-
-```markdown
 # ProZKit
 
 ProZKit is a Swift Package that provides a customizable call bottom view component for iOS applications. It features an attractive, gradient-backed view with built-in call control buttons, a call timer, and configurable labels for displaying clinic and doctor information.
@@ -79,6 +76,3 @@ Contributions to ProZKit are welcome! If you have ideas for improvements, bug fi
 ## License
 
 ProZKit is released under the MIT License. See the [LICENSE](LICENSE) file for details.
-```
-
-This README provides an overview of ProZKit, its features, installation instructions, usage examples, and contribution guidelines. Adjust any sections to fit your project’s specifics or additional functionality.
