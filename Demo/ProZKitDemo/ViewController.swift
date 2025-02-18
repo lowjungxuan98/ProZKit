@@ -13,8 +13,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        callBottomView.setViewController(self)
+        callBottomView.setViewController(self, safeArea: false)
         callBottomView.setImage(for: .endCall, with: UIImage(systemName: "phone"))
+        callBottomView.setSize(for: .endCall, buttonSize: 55)
+        callBottomView.setText(for: .switchCamera, labelText: "Flip")
         callBottomView.startTimer()
     }
 }

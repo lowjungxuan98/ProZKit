@@ -8,6 +8,8 @@ import UIKit
 
 public class ATCallBottomView: UIView {
     
+    // MARK: - Top Labels & Info
+    
     public let clinicNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -56,35 +58,24 @@ public class ATCallBottomView: UIView {
         return stack
     }()
     
-    public let muteButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        if let icon = UIImage(systemName: "speaker.slash.fill") {
-            button.setImage(icon, for: .normal)
-        }
-        button.tintColor = .systemBlue
-        return button
+    // MARK: - Call Control Views
+    
+    public lazy var muteControl: CallControlView = {
+        let image = UIImage(systemName: "speaker.slash.fill")
+        return CallControlView(image: image, labelText: "Mute", tintColor: .systemBlue, buttonSize: 55)
     }()
     
-    public let endCallButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        if let icon = UIImage(systemName: "phone.down.fill") {
-            button.setImage(icon, for: .normal)
-        }
-        button.tintColor = .systemRed
-        return button
+    public lazy var endCallControl: CallControlView = {
+        let image = UIImage(systemName: "phone.down.fill")
+        return CallControlView(image: image, labelText: "End Call", tintColor: .systemRed, buttonSize: 70)
     }()
     
-    public let switchCameraButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        if let icon = UIImage(systemName: "camera.rotate.fill") {
-            button.setImage(icon, for: .normal)
-        }
-        button.tintColor = .systemGreen
-        return button
+    public lazy var switchCameraControl: CallControlView = {
+        let image = UIImage(systemName: "camera.rotate.fill")
+        return CallControlView(image: image, labelText: "Switch Camera", tintColor: .systemGreen, buttonSize: 55)
     }()
+    
+    // MARK: - Timer View
     
     public let timerView: UIView = {
         let view = UIView()
@@ -104,6 +95,8 @@ public class ATCallBottomView: UIView {
         return label
     }()
     
+    // MARK: - Container Stack Views
+    
     private let topStackView: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -118,9 +111,12 @@ public class ATCallBottomView: UIView {
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
         stack.alignment = .center
+        stack.distribution = .fillEqually
         stack.spacing = 28
         return stack
     }()
+    
+    // MARK: - Properties
     
     private var gradientLayer: CAGradientLayer?
     private var timer: Timer?
@@ -129,6 +125,8 @@ public class ATCallBottomView: UIView {
     public var mute: (() -> Void)?
     public var endCall: (() -> Void)?
     public var camera: (() -> Void)?
+    
+    // MARK: - Initialization
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -141,6 +139,8 @@ public class ATCallBottomView: UIView {
         setupView()
         setButtonActions()
     }
+    
+    // MARK: - Layout
     
     public override func layoutSubviews() {
         super.layoutSubviews()
@@ -155,16 +155,20 @@ public class ATCallBottomView: UIView {
         gradientLayer = newGradient
     }
     
+    // MARK: - Setup Methods
+    
     private func setupView() {
         addSubview(topStackView)
         addSubview(bottomStackView)
         addSubview(timerView)
         timerView.addSubview(timerLabel)
+        
         topStackView.addArrangedSubview(clinicNameLabel)
         topStackView.addArrangedSubview(doctorInfoStackView)
-        bottomStackView.addArrangedSubview(muteButton)
-        bottomStackView.addArrangedSubview(endCallButton)
-        bottomStackView.addArrangedSubview(switchCameraButton)
+        
+        bottomStackView.addArrangedSubview(muteControl)
+        bottomStackView.addArrangedSubview(endCallControl)
+        bottomStackView.addArrangedSubview(switchCameraControl)
         
         NSLayoutConstraint.activate([
             topStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
@@ -180,34 +184,28 @@ public class ATCallBottomView: UIView {
             timerLabel.centerYAnchor.constraint(equalTo: timerView.centerYAnchor)
         ])
         
-        muteButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        muteButton.widthAnchor.constraint(equalTo: muteButton.heightAnchor).isActive = true
-        
-        endCallButton.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        endCallButton.widthAnchor.constraint(equalTo: endCallButton.heightAnchor).isActive = true
-        
-        switchCameraButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        switchCameraButton.widthAnchor.constraint(equalTo: switchCameraButton.heightAnchor).isActive = true
-        
         dashLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     
     private func setButtonActions() {
-        self.muteButton.addTarget(self, action: #selector(handleMuteButton), for: .touchUpInside)
-        self.endCallButton.addTarget(self, action: #selector(handleEndCallButton), for: .touchUpInside)
-        self.switchCameraButton.addTarget(self, action: #selector(handleSwitchCameraButton), for: .touchUpInside)
+        muteControl.button.addTarget(self, action: #selector(handleMuteButton), for: .touchUpInside)
+        endCallControl.button.addTarget(self, action: #selector(handleEndCallButton), for: .touchUpInside)
+        switchCameraControl.button.addTarget(self, action: #selector(handleSwitchCameraButton), for: .touchUpInside)
     }
     
+    // MARK: - Public Methods
+    
     public func configureInfo(clinicName: String?, doctorName: String?, doctorNumber: String?) {
-        self.clinicNameLabel.text = clinicName
-        if let dName = doctorName, !dName.isEmpty, let dNumber = doctorNumber, !dNumber.isEmpty {
-            self.doctorNameLabel.text = dName
-            self.doctorMCRLabel.text = dNumber
-            self.dashLabel.isHidden = false
+        clinicNameLabel.text = clinicName
+        if let dName = doctorName, !dName.isEmpty,
+           let dNumber = doctorNumber, !dNumber.isEmpty {
+            doctorNameLabel.text = dName
+            doctorMCRLabel.text = dNumber
+            dashLabel.isHidden = false
         } else {
-            self.doctorNameLabel.text = doctorName ?? ""
-            self.doctorMCRLabel.text = doctorNumber ?? ""
-            self.dashLabel.isHidden = true
+            doctorNameLabel.text = doctorName ?? ""
+            doctorMCRLabel.text = doctorNumber ?? ""
+            dashLabel.isHidden = true
         }
     }
     
@@ -215,13 +213,37 @@ public class ATCallBottomView: UIView {
         switch buttonType {
         case .mute:
             let defaultImage = UIImage(systemName: "speaker.slash.fill")
-            muteButton.setImage(image ?? defaultImage, for: .normal)
+            muteControl.button.setImage(image ?? defaultImage, for: .normal)
         case .endCall:
             let defaultImage = UIImage(systemName: "phone.down.fill")
-            endCallButton.setImage(image ?? defaultImage, for: .normal)
+            endCallControl.button.setImage(image ?? defaultImage, for: .normal)
         case .switchCamera:
             let defaultImage = UIImage(systemName: "camera.rotate.fill")
-            switchCameraButton.setImage(image ?? defaultImage, for: .normal)
+            switchCameraControl.button.setImage(image ?? defaultImage, for: .normal)
+        }
+    }
+    
+    /// Updates the button size for the specified control.
+    public func setSize(for buttonType: ButtonType, buttonSize: CGFloat) {
+        switch buttonType {
+        case .mute:
+            muteControl.updateButtonSize(buttonSize)
+        case .endCall:
+            endCallControl.updateButtonSize(buttonSize)
+        case .switchCamera:
+            switchCameraControl.updateButtonSize(buttonSize)
+        }
+    }
+    
+    /// Updates the label text for the specified control.
+    public func setText(for buttonType: ButtonType, labelText: String) {
+        switch buttonType {
+        case .mute:
+            muteControl.updateLabelText(labelText)
+        case .endCall:
+            endCallControl.updateLabelText(labelText)
+        case .switchCamera:
+            switchCameraControl.updateLabelText(labelText)
         }
     }
     
@@ -229,13 +251,21 @@ public class ATCallBottomView: UIView {
         timer?.invalidate()
         elapsedSeconds = 0
         timerLabel.text = "00:00"
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimerLabel), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(
+            timeInterval: 1.0,
+            target: self,
+            selector: #selector(updateTimerLabel),
+            userInfo: nil,
+            repeats: true
+        )
     }
     
     public func stopTimer() {
         timer?.invalidate()
         timer = nil
     }
+    
+    // MARK: - Private Methods
     
     @objc private func updateTimerLabel() {
         elapsedSeconds += 1
@@ -266,13 +296,17 @@ public class ATCallBottomView: UIView {
         camera?()
     }
     
-    public func setViewController(_ viewController: UIViewController) {
+    public func setViewController(_ viewController: UIViewController, safeArea: Bool) {
         self.translatesAutoresizingMaskIntoConstraints = false
         viewController.view.addSubview(self)
         NSLayoutConstraint.activate([
-            self.leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor),
-            self.trailingAnchor.constraint(equalTo: viewController.view.trailingAnchor),
-            self.bottomAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.bottomAnchor)
+            leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor),
+            trailingAnchor.constraint(equalTo: viewController.view.trailingAnchor)
         ])
+        if safeArea {
+            bottomAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        } else {
+            bottomAnchor.constraint(equalTo: viewController.view.bottomAnchor).isActive = true
+        }
     }
 }
