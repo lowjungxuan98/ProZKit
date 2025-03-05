@@ -1,0 +1,42 @@
+{
+  "originHash" : "5fdd47756608370818cf2667c69cbf3b1c8b661acb4a37507127f8128b705428",
+  "pins" : [
+    {
+      "identity" : "agorainfra_ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AgoraIO/AgoraInfra_iOS.git",
+      "state" : {
+        "revision" : "c2781d81a1ac78b94fefd53171975acb426b6ac5",
+        "version" : "1.2.13"
+      }
+    },
+    {
+      "identity" : "agorartcengine_ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AgoraIO/AgoraRtcEngine_iOS",
+      "state" : {
+        "revision" : "a82c611ad23e7c0b5342e0cd99d36d1ba6288d01",
+        "version" : "4.5.1"
+      }
+    },
+    {
+      "identity" : "omise-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/omise/omise-ios.git",
+      "state" : {
+        "revision" : "dbd224729a47d105636fe6dfceaed476095fc851",
+        "version" : "5.3.0"
+      }
+    },
+    {
+      "identity" : "spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ios-3ds-sdk/SPM",
+      "state" : {
+        "revision" : "a4e55d7f10294ea81abd1db393ae05606a5efa46",
+        "version" : "2.4.0"
+      }
+    }
+  ],
+  "version" : 3
+}
