@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		5446A39B2D77F47600FD764B /* ProZKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5446A39A2D77F47600FD764B /* ProZKit */; };
+		54749D8E2D787A6000795788 /* ProZKit in Frameworks */ = {isa = PBXBuildFile; productRef = 54749D8D2D787A6000795788 /* ProZKit */; };
+		54749D912D787DB000795788 /* ProZKit in Frameworks */ = {isa = PBXBuildFile; productRef = 54749D902D787DB000795788 /* ProZKit */; };
+		54749D942D787E4E00795788 /* ProZKit in Frameworks */ = {isa = PBXBuildFile; productRef = 54749D932D787E4E00795788 /* ProZKit */; };
+		54749D962D787E4E00795788 /* RtcBasic in Frameworks */ = {isa = PBXBuildFile; productRef = 54749D952D787E4E00795788 /* RtcBasic */; };
+		54749D992D78822D00795788 /* ProZTool in Frameworks */ = {isa = PBXBuildFile; productRef = 54749D982D78822D00795788 /* ProZTool */; };
+		54749D9C2D7883B200795788 /* ProZTool in Frameworks */ = {isa = PBXBuildFile; productRef = 54749D9B2D7883B200795788 /* ProZTool */; };
+		54749D9F2D78842D00795788 /* ProZTool in Frameworks */ = {isa = PBXBuildFile; productRef = 54749D9E2D78842D00795788 /* ProZTool */; };
+		54749DA22D78849F00795788 /* ProZKit in Frameworks */ = {isa = PBXBuildFile; productRef = 54749DA12D78849F00795788 /* ProZKit */; };
+		54749DA52D7884B500795788 /* ProZKit in Frameworks */ = {isa = PBXBuildFile; productRef = 54749DA42D7884B500795788 /* ProZKit */; };
+		54749DA82D7884F100795788 /* ProZKit in Frameworks */ = {isa = PBXBuildFile; productRef = 54749DA72D7884F100795788 /* ProZKit */; };
+		54749DAB2D78853400795788 /* ProZKit in Frameworks */ = {isa = PBXBuildFile; productRef = 54749DAA2D78853400795788 /* ProZKit */; };
+		54749DAE2D7885E300795788 /* ProZKit in Frameworks */ = {isa = PBXBuildFile; productRef = 54749DAD2D7885E300795788 /* ProZKit */; };
 		549CD1A02D5ED40800F74A24 /* ProZKit in Frameworks */ = {isa = PBXBuildFile; productRef = 549CD19F2D5ED40800F74A24 /* ProZKit */; };
 /* End PBXBuildFile section */
 
@@ -70,8 +82,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54749DA22D78849F00795788 /* ProZKit in Frameworks */,
+				54749D942D787E4E00795788 /* ProZKit in Frameworks */,
+				54749D9C2D7883B200795788 /* ProZTool in Frameworks */,
+				54749DAB2D78853400795788 /* ProZKit in Frameworks */,
+				54749D8E2D787A6000795788 /* ProZKit in Frameworks */,
 				5446A39B2D77F47600FD764B /* ProZKit in Frameworks */,
+				54749D912D787DB000795788 /* ProZKit in Frameworks */,
+				54749DA82D7884F100795788 /* ProZKit in Frameworks */,
+				54749D9F2D78842D00795788 /* ProZTool in Frameworks */,
+				54749DA52D7884B500795788 /* ProZKit in Frameworks */,
 				549CD1A02D5ED40800F74A24 /* ProZKit in Frameworks */,
+				54749D992D78822D00795788 /* ProZTool in Frameworks */,
+				54749DAE2D7885E300795788 /* ProZKit in Frameworks */,
+				54749D962D787E4E00795788 /* RtcBasic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +158,18 @@
 			packageProductDependencies = (
 				549CD19F2D5ED40800F74A24 /* ProZKit */,
 				5446A39A2D77F47600FD764B /* ProZKit */,
+				54749D8D2D787A6000795788 /* ProZKit */,
+				54749D902D787DB000795788 /* ProZKit */,
+				54749D932D787E4E00795788 /* ProZKit */,
+				54749D952D787E4E00795788 /* RtcBasic */,
+				54749D982D78822D00795788 /* ProZTool */,
+				54749D9B2D7883B200795788 /* ProZTool */,
+				54749D9E2D78842D00795788 /* ProZTool */,
+				54749DA12D78849F00795788 /* ProZKit */,
+				54749DA42D7884B500795788 /* ProZKit */,
+				54749DA72D7884F100795788 /* ProZKit */,
+				54749DAA2D78853400795788 /* ProZKit */,
+				54749DAD2D7885E300795788 /* ProZKit */,
 			);
 			productName = ProZKitDemo;
 			productReference = 542B04312D5ECCCC0090F297 /* ProZKitDemo.app */;
@@ -218,7 +254,7 @@
 			mainGroup = 542B04282D5ECCCC0090F297;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				5446A3992D77F47600FD764B /* XCLocalSwiftPackageReference "../../ProZKit" */,
+				54749DAC2D7885E300795788 /* XCLocalSwiftPackageReference "../../ProZKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 542B04322D5ECCCC0090F297 /* Products */;
@@ -583,7 +619,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		5446A3992D77F47600FD764B /* XCLocalSwiftPackageReference "../../ProZKit" */ = {
+		54749DAC2D7885E300795788 /* XCLocalSwiftPackageReference "../../ProZKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../../ProZKit;
 		};
@@ -591,6 +627,54 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		5446A39A2D77F47600FD764B /* ProZKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ProZKit;
+		};
+		54749D8D2D787A6000795788 /* ProZKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ProZKit;
+		};
+		54749D902D787DB000795788 /* ProZKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ProZKit;
+		};
+		54749D932D787E4E00795788 /* ProZKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ProZKit;
+		};
+		54749D952D787E4E00795788 /* RtcBasic */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RtcBasic;
+		};
+		54749D982D78822D00795788 /* ProZTool */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ProZTool;
+		};
+		54749D9B2D7883B200795788 /* ProZTool */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ProZTool;
+		};
+		54749D9E2D78842D00795788 /* ProZTool */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ProZTool;
+		};
+		54749DA12D78849F00795788 /* ProZKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ProZKit;
+		};
+		54749DA42D7884B500795788 /* ProZKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ProZKit;
+		};
+		54749DA72D7884F100795788 /* ProZKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ProZKit;
+		};
+		54749DAA2D78853400795788 /* ProZKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ProZKit;
+		};
+		54749DAD2D7885E300795788 /* ProZKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ProZKit;
 		};

@@ -1,24 +1,6 @@
 {
-  "originHash" : "5fdd47756608370818cf2667c69cbf3b1c8b661acb4a37507127f8128b705428",
+  "originHash" : "d772eecf610f663775d5bcced25fdeb0a9d22aa42e09f9f5a34cf372f4bdb133",
   "pins" : [
-    {
-      "identity" : "agorainfra_ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AgoraIO/AgoraInfra_iOS.git",
-      "state" : {
-        "revision" : "c2781d81a1ac78b94fefd53171975acb426b6ac5",
-        "version" : "1.2.13"
-      }
-    },
-    {
-      "identity" : "agorartcengine_ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AgoraIO/AgoraRtcEngine_iOS",
-      "state" : {
-        "revision" : "a82c611ad23e7c0b5342e0cd99d36d1ba6288d01",
-        "version" : "4.5.1"
-      }
-    },
     {
       "identity" : "omise-ios",
       "kind" : "remoteSourceControl",
