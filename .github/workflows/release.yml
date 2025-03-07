@@ -1,0 +1,42 @@
+name: Release New Version
+
+on:
+  push:
+    tags:
+      - 'v*' # 监听 v 开头的标签
+
+jobs:
+  build-and-test:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # 设置 Swift 环境
+      - name: Setup Swift
+        uses: swift-actions/setup-swift@v1
+        with:
+          swift-version: "6.0"
+
+      # 运行测试
+      - name: Run Tests
+        run: swift test
+
+  create-release:
+    needs: build-and-test # 依赖测试任务
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 允许写入 Releases
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # 自动生成 Release Notes
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }} # 使用触发的标签
+          name: ${{ github.ref_name }}
+          body: "Automated release for version ${{ github.ref_name }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # 使用内置 Token
