@@ -3,7 +3,7 @@ name: Release New Version
 on:
   push:
     tags:
-      - 'v*' # 监听 v 开头的标签
+      - '*' # 监听 v 开头的标签
 
 jobs:
   build-and-test:
