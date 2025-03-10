@@ -7,8 +7,8 @@
 
 import UIKit
 
-extension UILabel {
-    public func addFontShadow() {
+public extension UILabel {
+    func addFontShadow() {
         textColor = .white
         backgroundColor = .clear
         layer.shadowColor = UIColor.black.cgColor

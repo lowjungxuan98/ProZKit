@@ -9,10 +9,7 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         _ = AutoLogoutManager.shared // 激活单例
         return true
@@ -20,19 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: UISceneSession Lifecycle
 
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+    func application(_: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options _: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+        UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+    func application(_: UIApplication, didDiscardSceneSessions _: Set<UISceneSession>) {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 
 final class AutoLogoutManager {
@@ -40,22 +35,22 @@ final class AutoLogoutManager {
     private init() {
         // 仅注册通知
         NotificationCenter.default.addObserver(self,
-            selector: #selector(appDidBecomeActive),
-            name: UIApplication.didBecomeActiveNotification,
-            object: nil)
+                                               selector: #selector(appDidBecomeActive),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
         NotificationCenter.default.addObserver(self,
-            selector: #selector(appWillResignActive),
-            name: UIApplication.willResignActiveNotification,
-            object: nil)
+                                               selector: #selector(appWillResignActive),
+                                               name: UIApplication.willResignActiveNotification,
+                                               object: nil)
     }
-    
+
     private let autoLogoutInterval: TimeInterval = 10
     private var logoutTimer: Timer?
     private var bgTime: Date?
-    
+
     @objc private func appDidBecomeActive() {
         // 调整定时器（如果有后台记录）
-        if let bgTime = bgTime {
+        if let bgTime {
             let duration = Date().timeIntervalSince(bgTime)
             adjustTimer(for: duration)
         }
@@ -67,18 +62,18 @@ final class AutoLogoutManager {
             renewExpirationDate()
         }
     }
-    
+
     @objc private func appWillResignActive() {
         bgTime = Date()
         logoutTimer?.invalidate()
     }
-    
+
     private func renewExpirationDate() {
         let newExp = Date().addingTimeInterval(autoLogoutInterval)
         UserDefaults.standard.set(newExp, forKey: "expiredDate")
         scheduleTimer()
     }
-    
+
     private func scheduleTimer() {
         logoutTimer?.invalidate()
         guard let exp = UserDefaults.standard.object(forKey: "expiredDate") as? Date else { return }
@@ -93,13 +88,13 @@ final class AutoLogoutManager {
                                            userInfo: nil,
                                            repeats: false)
     }
-    
+
     private func adjustTimer(for duration: TimeInterval) {
         guard let exp = UserDefaults.standard.object(forKey: "expiredDate") as? Date else { return }
         let remaining = exp.timeIntervalSince(Date()) - duration
         remaining <= 0 ? triggerLogout() : scheduleTimer()
     }
-    
+
     @objc private func triggerLogout() {
         DispatchQueue.main.async {
             guard let topVC = UIViewController.topMostViewController() else { return }
@@ -112,7 +107,7 @@ final class AutoLogoutManager {
             topVC.present(alert, animated: true)
         }
     }
-    
+
     private func performLogout() {
         // 仅在真正登出时移除 expiredDate
         UserDefaults.standard.removeObject(forKey: "expiredDate")
@@ -122,13 +117,13 @@ final class AutoLogoutManager {
             window.makeKeyAndVisible()
         }
     }
-    
+
     // 模拟用户登录状态的判断函数，根据实际业务替换实现
     private func isUserLoggedIn() -> Bool {
         // 例如通过检测用户 token、用户 ID 等
-        return true
+        true
     }
-    
+
     func handleLoginSuccess() {
         renewExpirationDate()
     }
@@ -139,7 +134,7 @@ extension UIViewController {
         guard let root = UIApplication.shared.keyWindow?.rootViewController else { return nil }
         return topVC(from: root)
     }
-    
+
     private static func topVC(from vc: UIViewController) -> UIViewController {
         if let p = vc.presentedViewController {
             return topVC(from: p)

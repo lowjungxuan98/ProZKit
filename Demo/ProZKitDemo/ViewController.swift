@@ -5,14 +5,14 @@
 //  Created by Low Jung Xuan on 14/2/25.
 //
 
-import UIKit
-import ProZKit
+import AgoraRtcKit
 import MobileRTC
-import AgoraRtcKit 
+import ProZKit
+import UIKit
 
 class ViewController: UIViewController {
     private let callBottomView = ATCallBottomView()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         print(MobileRTC.shared().mobileRTCVersion() ?? "")

@@ -5,7 +5,7 @@ let package = Package(
     name: "ProZKit",
     defaultLocalization: "en",
     platforms: [
-        .iOS(.v13)
+        .iOS(.v13),
     ],
     products: [
         .library(
@@ -25,6 +25,10 @@ let package = Package(
         .package(
             url: "https://github.com/AgoraIO/AgoraRtcEngine_iOS",
             exact: "4.5.1"
+        ),
+        .package(
+            url: "https://github.com/nicklockwood/SwiftFormat",
+            from: "0.55.0"
         ),
     ],
     targets: [
@@ -60,11 +64,11 @@ let package = Package(
                 .product(name: "VideoCodecDec", package: "AgoraRtcEngine_iOS"),
                 .product(name: "VideoAv1CodecEnc", package: "AgoraRtcEngine_iOS"),
                 .product(name: "VideoAv1CodecDec", package: "AgoraRtcEngine_iOS"),
-                .product(name: "ReplayKit", package: "AgoraRtcEngine_iOS")
+                .product(name: "ReplayKit", package: "AgoraRtcEngine_iOS"),
             ],
             resources: [
-                .copy("Resources/MobileRTCResources.bundle")
+                .copy("Resources/MobileRTCResources.bundle"),
             ]
-        )
+        ),
     ]
 )
