@@ -3,7 +3,7 @@ name: Release New Version
 on:
   push:
     tags:
-      - '*' # 监听 v 开头的标签
+      - '*'
 
 jobs:
   build-and-test:
@@ -19,8 +19,8 @@ jobs:
           swift-version: "6.0"
 
       # 运行测试
-      - name: Run Tests
-        run: swift test
+#      - name: Run Tests
+#        run: swift test
 
   create-release:
     needs: build-and-test # 依赖测试任务

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ButtonType.swift
 //  ProZKit
 //
 //  Created by Low Jung Xuan on 14/2/25.

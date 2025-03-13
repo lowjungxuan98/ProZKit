@@ -2,3 +2,4 @@
 /.idea/*
 /.swiftpm/*
 /Package.resolved
+/.index-build/
