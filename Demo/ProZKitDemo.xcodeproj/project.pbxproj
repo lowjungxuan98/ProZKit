@@ -7,30 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		547D45A22D82E2EE00F546C5 /* ProZKit in Frameworks */ = {isa = PBXBuildFile; productRef = 547D45A12D82E2EE00F546C5 /* ProZKit */; };
 		54CF20F82D7987A5003D3FD7 /* ProZKit in Frameworks */ = {isa = PBXBuildFile; productRef = 54CF20F72D7987A5003D3FD7 /* ProZKit */; };
+		54E0716C2D8133F500708735 /* MobileRTCResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 54E0716B2D8133F500708735 /* MobileRTCResources.bundle */; };
+		54E6DC282D811570002B632E /* ProZKit in Frameworks */ = {isa = PBXBuildFile; productRef = 54E6DC272D811570002B632E /* ProZKit */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		542B04482D5ECCCD0090F297 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 542B04292D5ECCCC0090F297 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 542B04302D5ECCCC0090F297;
-			remoteInfo = ProZKitDemo;
-		};
-		542B04522D5ECCCD0090F297 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 542B04292D5ECCCC0090F297 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 542B04302D5ECCCC0090F297;
-			remoteInfo = ProZKitDemo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		542B04312D5ECCCC0090F297 /* ProZKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProZKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		542B04472D5ECCCD0090F297 /* ProZKitDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProZKitDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		542B04512D5ECCCD0090F297 /* ProZKitDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProZKitDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54E0716B2D8133F500708735 /* MobileRTCResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MobileRTCResources.bundle; path = ../Sources/ProZKit/Resources/MobileRTCResources.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -59,21 +44,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				547D45A22D82E2EE00F546C5 /* ProZKit in Frameworks */,
+				54E6DC282D811570002B632E /* ProZKit in Frameworks */,
 				54CF20F82D7987A5003D3FD7 /* ProZKit in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		542B04442D5ECCCD0090F297 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		542B044E2D5ECCCD0090F297 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +56,7 @@
 		542B04282D5ECCCC0090F297 = {
 			isa = PBXGroup;
 			children = (
+				54E0716B2D8133F500708735 /* MobileRTCResources.bundle */,
 				542B04332D5ECCCC0090F297 /* ProZKitDemo */,
 				542B04322D5ECCCC0090F297 /* Products */,
 			);
@@ -92,8 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				542B04312D5ECCCC0090F297 /* ProZKitDemo.app */,
-				542B04472D5ECCCD0090F297 /* ProZKitDemoTests.xctest */,
-				542B04512D5ECCCD0090F297 /* ProZKitDemoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,50 +91,12 @@
 			name = ProZKitDemo;
 			packageProductDependencies = (
 				54CF20F72D7987A5003D3FD7 /* ProZKit */,
+				54E6DC272D811570002B632E /* ProZKit */,
+				547D45A12D82E2EE00F546C5 /* ProZKit */,
 			);
 			productName = ProZKitDemo;
 			productReference = 542B04312D5ECCCC0090F297 /* ProZKitDemo.app */;
 			productType = "com.apple.product-type.application";
-		};
-		542B04462D5ECCCD0090F297 /* ProZKitDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 542B045F2D5ECCCD0090F297 /* Build configuration list for PBXNativeTarget "ProZKitDemoTests" */;
-			buildPhases = (
-				542B04432D5ECCCD0090F297 /* Sources */,
-				542B04442D5ECCCD0090F297 /* Frameworks */,
-				542B04452D5ECCCD0090F297 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				542B04492D5ECCCD0090F297 /* PBXTargetDependency */,
-			);
-			name = ProZKitDemoTests;
-			packageProductDependencies = (
-			);
-			productName = ProZKitDemoTests;
-			productReference = 542B04472D5ECCCD0090F297 /* ProZKitDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		542B04502D5ECCCD0090F297 /* ProZKitDemoUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 542B04622D5ECCCD0090F297 /* Build configuration list for PBXNativeTarget "ProZKitDemoUITests" */;
-			buildPhases = (
-				542B044D2D5ECCCD0090F297 /* Sources */,
-				542B044E2D5ECCCD0090F297 /* Frameworks */,
-				542B044F2D5ECCCD0090F297 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				542B04532D5ECCCD0090F297 /* PBXTargetDependency */,
-			);
-			name = ProZKitDemoUITests;
-			packageProductDependencies = (
-			);
-			productName = ProZKitDemoUITests;
-			productReference = 542B04512D5ECCCD0090F297 /* ProZKitDemoUITests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -177,14 +111,6 @@
 					542B04302D5ECCCC0090F297 = {
 						CreatedOnToolsVersion = 16.2;
 					};
-					542B04462D5ECCCD0090F297 = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 542B04302D5ECCCC0090F297;
-					};
-					542B04502D5ECCCD0090F297 = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 542B04302D5ECCCC0090F297;
-					};
 				};
 			};
 			buildConfigurationList = 542B042C2D5ECCCC0090F297 /* Build configuration list for PBXProject "ProZKitDemo" */;
@@ -197,7 +123,7 @@
 			mainGroup = 542B04282D5ECCCC0090F297;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				54CF20F62D7987A5003D3FD7 /* XCLocalSwiftPackageReference "../../ProZKit" */,
+				547D45A02D82E2EE00F546C5 /* XCLocalSwiftPackageReference "../../ProZKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 542B04322D5ECCCC0090F297 /* Products */;
@@ -205,8 +131,6 @@
 			projectRoot = "";
 			targets = (
 				542B04302D5ECCCC0090F297 /* ProZKitDemo */,
-				542B04462D5ECCCD0090F297 /* ProZKitDemoTests */,
-				542B04502D5ECCCD0090F297 /* ProZKitDemoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -216,20 +140,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		542B04452D5ECCCD0090F297 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		542B044F2D5ECCCD0090F297 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				54E0716C2D8133F500708735 /* MobileRTCResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,34 +154,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		542B04432D5ECCCD0090F297 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		542B044D2D5ECCCD0090F297 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		542B04492D5ECCCD0090F297 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 542B04302D5ECCCC0090F297 /* ProZKitDemo */;
-			targetProxy = 542B04482D5ECCCD0090F297 /* PBXContainerItemProxy */;
-		};
-		542B04532D5ECCCD0090F297 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 542B04302D5ECCCC0090F297 /* ProZKitDemo */;
-			targetProxy = 542B04522D5ECCCD0090F297 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		542B045B2D5ECCCD0090F297 /* Debug */ = {
@@ -448,78 +332,6 @@
 			};
 			name = Release;
 		};
-		542B04602D5ECCCD0090F297 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VY29JJAQ35;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lowjungxuan.ProZKitDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProZKitDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ProZKitDemo";
-			};
-			name = Debug;
-		};
-		542B04612D5ECCCD0090F297 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VY29JJAQ35;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lowjungxuan.ProZKitDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProZKitDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ProZKitDemo";
-			};
-			name = Release;
-		};
-		542B04632D5ECCCD0090F297 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VY29JJAQ35;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lowjungxuan.ProZKitDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ProZKitDemo;
-			};
-			name = Debug;
-		};
-		542B04642D5ECCCD0090F297 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VY29JJAQ35;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lowjungxuan.ProZKitDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ProZKitDemo;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -541,35 +353,25 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		542B045F2D5ECCCD0090F297 /* Build configuration list for PBXNativeTarget "ProZKitDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				542B04602D5ECCCD0090F297 /* Debug */,
-				542B04612D5ECCCD0090F297 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		542B04622D5ECCCD0090F297 /* Build configuration list for PBXNativeTarget "ProZKitDemoUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				542B04632D5ECCCD0090F297 /* Debug */,
-				542B04642D5ECCCD0090F297 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		54CF20F62D7987A5003D3FD7 /* XCLocalSwiftPackageReference "../../ProZKit" */ = {
+		547D45A02D82E2EE00F546C5 /* XCLocalSwiftPackageReference "../../ProZKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../../ProZKit;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		547D45A12D82E2EE00F546C5 /* ProZKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ProZKit;
+		};
 		54CF20F72D7987A5003D3FD7 /* ProZKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ProZKit;
+		};
+		54E6DC272D811570002B632E /* ProZKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ProZKit;
 		};
