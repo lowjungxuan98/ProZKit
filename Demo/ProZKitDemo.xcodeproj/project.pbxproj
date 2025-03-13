@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		547D45A22D82E2EE00F546C5 /* ProZKit in Frameworks */ = {isa = PBXBuildFile; productRef = 547D45A12D82E2EE00F546C5 /* ProZKit */; };
 		54CF20F82D7987A5003D3FD7 /* ProZKit in Frameworks */ = {isa = PBXBuildFile; productRef = 54CF20F72D7987A5003D3FD7 /* ProZKit */; };
 		54E0716C2D8133F500708735 /* MobileRTCResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 54E0716B2D8133F500708735 /* MobileRTCResources.bundle */; };
 		54E6DC282D811570002B632E /* ProZKit in Frameworks */ = {isa = PBXBuildFile; productRef = 54E6DC272D811570002B632E /* ProZKit */; };
@@ -43,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				547D45A22D82E2EE00F546C5 /* ProZKit in Frameworks */,
 				54E6DC282D811570002B632E /* ProZKit in Frameworks */,
 				54CF20F82D7987A5003D3FD7 /* ProZKit in Frameworks */,
 			);
@@ -90,6 +92,7 @@
 			packageProductDependencies = (
 				54CF20F72D7987A5003D3FD7 /* ProZKit */,
 				54E6DC272D811570002B632E /* ProZKit */,
+				547D45A12D82E2EE00F546C5 /* ProZKit */,
 			);
 			productName = ProZKitDemo;
 			productReference = 542B04312D5ECCCC0090F297 /* ProZKitDemo.app */;
@@ -120,7 +123,7 @@
 			mainGroup = 542B04282D5ECCCC0090F297;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				54E6DC262D811570002B632E /* XCLocalSwiftPackageReference "../../ProZKit" */,
+				547D45A02D82E2EE00F546C5 /* XCLocalSwiftPackageReference "../../ProZKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 542B04322D5ECCCC0090F297 /* Products */;
@@ -353,13 +356,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		54E6DC262D811570002B632E /* XCLocalSwiftPackageReference "../../ProZKit" */ = {
+		547D45A02D82E2EE00F546C5 /* XCLocalSwiftPackageReference "../../ProZKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../../ProZKit;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		547D45A12D82E2EE00F546C5 /* ProZKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ProZKit;
+		};
 		54CF20F72D7987A5003D3FD7 /* ProZKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ProZKit;

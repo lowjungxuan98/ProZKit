@@ -10,11 +10,7 @@ import ProZKit
 import UIKit
 
 class ViewController: UIViewController {
-    
-    lazy var customMeetingVC: CustomMeetingViewController = {
-        return CustomMeetingViewController()
-    }()
-    
+
     let joinButton = {
         let button = UIButton(type: .system)
         button.setTitle("Join Meeting", for: .normal)
@@ -39,13 +35,13 @@ class ViewController: UIViewController {
     }
     
     @objc func joinMeeting() {
+//        callBottomView.setImage(for: .endCall, with: UIImage(systemName: "phone"))
+        
         ProZoomController.shared.startMeeting(
             self,
-            jwt: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBLZXkiOiI0VDhOXzQ1RlNjYWlLd1FMMG5aVFhBIiwic2RrS2V5IjoiNFQ4Tl80NUZTY2FpS3dRTDBuWlRYQSIsImlhdCI6MTc0MTg0NzEwNiwiZXhwIjoxNzQxODU0MzA2LCJ0b2tlbkV4cCI6MTc0MTg1NDMwNn0.9GhXBSeuWTQ-zr33BsTtl1lExXYG8Gh_MO7hnQ8HKUI",
-//            meetingId: "83266114104",
-            meetingId: "83900650482",
-//            passcode: "7Mke2h",
-            passcode: "7ZGbb3",
+            jwt: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBLZXkiOiI0VDhOXzQ1RlNjYWlLd1FMMG5aVFhBIiwic2RrS2V5IjoiNFQ4Tl80NUZTY2FpS3dRTDBuWlRYQSIsImlhdCI6MTc0MTg1NDA0OCwiZXhwIjoxNzQxODYxMjQ4LCJ0b2tlbkV4cCI6MTc0MTg2MTI0OH0.7VaY_TmvuO--HJ56k_kjel_0KL_RGAZ7QLAb1xwz3FM",
+            meetingId: "83266114104",
+            passcode: "7Mke2h",
             clinicName: "Zack Clinic",
             docterName: "Zack",
             docterNumber: "123456"

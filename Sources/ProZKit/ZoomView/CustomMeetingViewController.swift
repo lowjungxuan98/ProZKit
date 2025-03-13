@@ -7,7 +7,6 @@
 
 import UIKit
 import MobileRTC
-import ProZKit
 import AVKit
 
 class CustomMeetingViewController: UIViewController {
@@ -54,7 +53,6 @@ class CustomMeetingViewController: UIViewController {
         callBottomView.endCall = {
             MobileRTC.shared().getMeetingService()?.leaveMeeting(with: .leave)
         }
-        callBottomView.setImage(for: .endCall, with: UIImage(systemName: "phone"))
         callBottomView.setSize(for: .endCall, buttonSize: 55)
         
         callBottomView.camera = {
@@ -92,16 +90,7 @@ class CustomMeetingViewController: UIViewController {
         super.viewDidAppear(animated)
         MobileRTC.shared().getMeetingSettings()?.autoConnectInternetAudio()
         PrettyLogger.log("[CHECK CAMERA] \(MobileRTC.shared().getMeetingService()?.canUnmuteMyVideo() ?? false)")
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            MobileRTC.shared().getMeetingService()?.muteMyVideo(false)
-//        }
-//        reloadVideoView()
     }
-    
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        videoView.frame = self.view.bounds
-//    }
     
     func loadingView() {
         let vc  = WaitMeetingViewController()
@@ -119,7 +108,6 @@ class CustomMeetingViewController: UIViewController {
     }
     
     func reloadVideoView() {
-        MobileRTC.shared().getMeetingService()?.muteMyVideo(false)
         if let waitVC = presentedViewController as? WaitMeetingViewController {
             waitVC.dismiss(animated: true)
         }
@@ -135,6 +123,7 @@ class CustomMeetingViewController: UIViewController {
     
     func onSinkMeetingActiveVideo(_ userID: UInt) {
         if MobileRTC.shared().getMeetingService()?.isMyself(userID) ?? false {
+            MobileRTC.shared().getMeetingService()?.muteMyVideo(false)
             myVideoView.showAttendeeVideo(withUserID: userID)
         } else {
             videoView.showAttendeeVideo(withUserID: userID)
@@ -143,6 +132,7 @@ class CustomMeetingViewController: UIViewController {
     
     func onSinkMeetingVideoStatusChange(_ userID: UInt) {
         if MobileRTC.shared().getMeetingService()?.isMyself(userID) ?? false {
+            MobileRTC.shared().getMeetingService()?.muteMyVideo(false)
             myVideoView.showAttendeeVideo(withUserID: userID)
         } else {
             videoView.showAttendeeVideo(withUserID: userID)
