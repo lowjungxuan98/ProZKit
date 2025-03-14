@@ -9,8 +9,7 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    var window: UIWindow?  // Add this property
+    var window: UIWindow? // Add this property
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -32,8 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 }
+
 //
-//final class AutoLogoutManager {
+// final class AutoLogoutManager {
 //    static let shared = AutoLogoutManager()
 //    private init() {
 //        // 仅注册通知
@@ -130,9 +130,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    func handleLoginSuccess() {
 //        renewExpirationDate()
 //    }
-//}
+// }
 //
-//extension UIViewController {
+// extension UIViewController {
 //    static func topMostViewController() -> UIViewController? {
 //        guard let root = UIApplication.shared.keyWindow?.rootViewController else { return nil }
 //        return topVC(from: root)
@@ -150,4 +150,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
 //        return vc
 //    }
-//}
+// }
