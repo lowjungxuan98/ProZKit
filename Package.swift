@@ -23,11 +23,11 @@ let package = Package(
             exact: "11.9.0"
         ),
         .package(
-            url: "https://github.com/AgoraIO/AgoraRtcEngine_iOS",
+            url: "https://github.com/AgoraIO/AgoraRtcEngine_iOS.git",
             exact: "4.5.1"
         ),
         .package(
-            url: "https://github.com/nicklockwood/SwiftFormat",
+            url: "https://github.com/nicklockwood/SwiftFormat.git",
             from: "0.55.0"
         ),
     ],
@@ -45,6 +45,7 @@ let package = Package(
                 .product(name: "FirebaseAuth", package: "firebase-ios-sdk"),
                 .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
                 .product(name: "FirebaseMessaging", package: "firebase-ios-sdk"),
+                .product(name: "FirebaseDynamicLinks", package: "firebase-ios-sdk"),
                 // Agora products
                 .product(name: "RtcBasic", package: "AgoraRtcEngine_iOS"),
                 .product(name: "AINS", package: "AgoraRtcEngine_iOS"),
