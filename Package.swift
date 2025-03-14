@@ -45,6 +45,7 @@ let package = Package(
                 .product(name: "FirebaseAuth", package: "firebase-ios-sdk"),
                 .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
                 .product(name: "FirebaseMessaging", package: "firebase-ios-sdk"),
+                .product(name: "FirebaseDynamicLinks", package: "firebase-ios-sdk"),
                 // Agora products
                 .product(name: "RtcBasic", package: "AgoraRtcEngine_iOS"),
                 .product(name: "AINS", package: "AgoraRtcEngine_iOS"),
