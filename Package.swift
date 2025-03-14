@@ -30,6 +30,10 @@ let package = Package(
             url: "https://github.com/nicklockwood/SwiftFormat",
             from: "0.55.0"
         ),
+        .package(
+            url: "https://github.com/patchthecode/JTAppleCalendar.git",
+            from: "8.0.5"
+        ),
     ],
     targets: [
         .binaryTarget(
@@ -41,6 +45,7 @@ let package = Package(
             name: "ProZKit",
             dependencies: [
                 "MobileRTC",
+                "JTAppleCalendar",
                 .product(name: "OmiseSDK", package: "omise-ios"),
                 .product(name: "FirebaseAuth", package: "firebase-ios-sdk"),
                 .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
