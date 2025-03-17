@@ -34,6 +34,10 @@ let package = Package(
             url: "https://github.com/patchthecode/JTAppleCalendar.git",
             from: "8.0.5"
         ),
+        .package(
+            url: "https://github.com/hackiftekhar/IQKeyboardManager.git",
+            from: "8.0.0"
+        ),
     ],
     targets: [
         .binaryTarget(
@@ -42,10 +46,19 @@ let package = Package(
             checksum: "7b267dce98a2c61a249c95c6cdcaff664db4453e25de7be049094dd6deb89e92"
         ),
         .target(
+            name: "IoniconsSwift",
+            dependencies: [],
+            resources: [
+                // Processes all resources in the Resources folder.
+                .process("Resources"),
+            ]
+        ),
+        .target(
             name: "ProZKit",
             dependencies: [
                 "MobileRTC",
                 "JTAppleCalendar",
+                "IoniconsSwift",
                 .product(name: "OmiseSDK", package: "omise-ios"),
                 .product(name: "FirebaseAuth", package: "firebase-ios-sdk"),
                 .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
@@ -71,6 +84,8 @@ let package = Package(
                 .product(name: "VideoAv1CodecEnc", package: "AgoraRtcEngine_iOS"),
                 .product(name: "VideoAv1CodecDec", package: "AgoraRtcEngine_iOS"),
                 .product(name: "ReplayKit", package: "AgoraRtcEngine_iOS"),
+                // IQKeyboardManagerSwift
+                .product(name: "IQKeyboardManagerSwift", package: "IQKeyboardManager"),
             ],
             resources: [
                 .copy("Resources/MobileRTCResources.bundle"),

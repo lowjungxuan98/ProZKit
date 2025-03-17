@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-//extension AppDelegate {
+// extension AppDelegate {
 //    var topViewController: UIViewController? {
 //        guard let rootViewController = window?.rootViewController else { return nil }
 //        return getTopViewController(from: rootViewController)
 //    }
-//    
+//
 //    private func getTopViewController(from viewController: UIViewController) -> UIViewController {
 //        if let nav = viewController as? UINavigationController {
 //            return getTopViewController(from: nav.visibleViewController ?? nav)
@@ -27,4 +27,4 @@ import UIKit
 //        }
 //        return viewController
 //    }
-//}
+// }

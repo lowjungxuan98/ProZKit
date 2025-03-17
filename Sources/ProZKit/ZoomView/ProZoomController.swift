@@ -15,33 +15,27 @@ public class ProZoomController: NSObject { // 添加 public
     var jwt: String?
     var meetingId: String?
     var passcode: String?
-    
-    lazy var customMeetingVC: CustomMeetingViewController = {
-        return CustomMeetingViewController()
-    }()
-    
-    lazy var waitingHostVC: WaitingHostViewController = {
-        return WaitingHostViewController()
-    }()
-    
-    lazy var navigationController: UINavigationController? = {
-        return MobileRTC.shared().mobileRTCRootController()
-    }()
-    
+
+    lazy var customMeetingVC: CustomMeetingViewController = .init()
+
+    lazy var waitingHostVC: WaitingHostViewController = .init()
+
+    lazy var navigationController: UINavigationController? = MobileRTC.shared().mobileRTCRootController()
+
     public func initialize() {
         PrettyLogger.info("正在初始化 Zoom SDK...")
         let context = MobileRTCSDKInitContext()
-        context.domain = "https://zoom.us"  // 确保替换为你的真实 domain
+        context.domain = "https://zoom.us" // 确保替换为你的真实 domain
         context.enableLog = true
         context.locale = .default
-        context.enableCustomizeMeetingUI = true  // 必须开启自定义UI
+        context.enableCustomizeMeetingUI = true // 必须开启自定义UI
         guard MobileRTC.shared().initialize(context) else {
             PrettyLogger.error("Zoom SDK 初始化失败。")
             return
         }
         PrettyLogger.info("初始化成功。")
     }
-    
+
     public func startMeeting(
         _ controller: UIViewController,
         jwt: String,
@@ -54,48 +48,48 @@ public class ProZoomController: NSObject { // 添加 public
         self.jwt = jwt
         self.meetingId = meetingId
         self.passcode = passcode
-        
+
         guard let authService = MobileRTC.shared().getAuthService() else {
             PrettyLogger.error("无法获取认证服务。")
             return
         }
-        
+
         guard let navigationController = controller.navigationController else {
             PrettyLogger.error("没有UINavigationController。")
             return
         }
-        
+
         self.navigationController = navigationController
-        
+
         customMeetingVC.configureInfo(
             clinicName: clinicName,
             docterName: docterName,
             docterNumber: docterNumber
         )
-        
+
         authService.delegate = self
         authService.jwtToken = jwt
         authService.sdkAuth()
     }
-    
+
     private func joinMeeting() {
         PrettyLogger.info("点击加入会议按钮，准备加入会议...")
-        
+
         guard let meetingService = MobileRTC.shared().getMeetingService() else {
             PrettyLogger.error("无法获取会议服务。")
             return
         }
-        
+
         MobileRTC.shared().getWaitingRoomService()?.delegate = self
-        
+
         meetingService.customizedUImeetingDelegate = self
         meetingService.delegate = self
-        
+
         let joinParam = MobileRTCMeetingJoinParam()
         joinParam.meetingNumber = meetingId
         joinParam.password = passcode
         joinParam.userName = UIDevice.current.name
-        
+
         let result = meetingService.joinMeeting(with: joinParam)
         MobileRTC.shared().getMeetingSettings()?.setAutoConnectInternetAudio(true)
         PrettyLogger.info("[INFO] 加入会议结果: \(result)")
@@ -103,7 +97,7 @@ public class ProZoomController: NSObject { // 添加 public
 }
 
 extension ProZoomController: MobileRTCAuthDelegate {
-    nonisolated public func onMobileRTCAuthReturn(_ returnValue: MobileRTCAuthError) {
+    public nonisolated func onMobileRTCAuthReturn(_ returnValue: MobileRTCAuthError) {
         Task { @MainActor in
             switch returnValue {
             case .success:
@@ -141,7 +135,7 @@ extension ProZoomController: MobileRTCAuthDelegate {
 }
 
 extension ProZoomController: MobileRTCCustomizedUIMeetingDelegate {
-    nonisolated public func onInitMeetingView() {
+    public nonisolated func onInitMeetingView() {
         Task { @MainActor in
             PrettyLogger.info("[INFO] Zoom SDK 初始化会议视图，进入会议前...")
             if (navigationController?.presentedViewController as? CustomMeetingViewController) != nil {
@@ -153,8 +147,8 @@ extension ProZoomController: MobileRTCCustomizedUIMeetingDelegate {
             customMeetingVC.loadingView()
         }
     }
-    
-    nonisolated public func onDestroyMeetingView() {
+
+    public nonisolated func onDestroyMeetingView() {
         Task { @MainActor in
             PrettyLogger.info("[INFO] Zoom SDK 销毁会议视图，退出会议...")
             navigationController?.dismiss(animated: true)
@@ -163,7 +157,7 @@ extension ProZoomController: MobileRTCCustomizedUIMeetingDelegate {
 }
 
 extension ProZoomController: MobileRTCMeetingServiceDelegate {
-    nonisolated public func onMeetingStateChange(_ state: MobileRTCMeetingState) {
+    public nonisolated func onMeetingStateChange(_ state: MobileRTCMeetingState) {
         Task { @MainActor in
             switch state {
             case .idle:
@@ -212,8 +206,8 @@ extension ProZoomController: MobileRTCMeetingServiceDelegate {
             PrettyLogger.info("[MEETING STATE CHANGE] 当前会议状态：\(state)")
         }
     }
-    
-    nonisolated public func onMeetingError(_ error: MobileRTCMeetError, message: String?) {
+
+    public nonisolated func onMeetingError(_ error: MobileRTCMeetError, message: String?) {
         Task { @MainActor in
             switch error {
             case .success:
@@ -316,14 +310,14 @@ extension ProZoomController: MobileRTCMeetingServiceDelegate {
             PrettyLogger.error("[MEETING ERROR] 错误详情: \(error) - \(message ?? "")")
         }
     }
-    
-    nonisolated public func onSinkMeetingActiveVideo(forDeck userID: UInt) {
+
+    public nonisolated func onSinkMeetingActiveVideo(forDeck userID: UInt) {
         Task { @MainActor in
             customMeetingVC.onSinkMeetingActiveVideo(userID)
         }
     }
-    
-    nonisolated public func onSinkMeetingVideoStatusChange(_ userID: UInt) {
+
+    public nonisolated func onSinkMeetingVideoStatusChange(_ userID: UInt) {
         Task { @MainActor in
             customMeetingVC.onSinkMeetingVideoStatusChange(userID)
         }
@@ -331,13 +325,13 @@ extension ProZoomController: MobileRTCMeetingServiceDelegate {
 }
 
 extension ProZoomController: MobileRTCWaitingRoomServiceDelegate {
-    nonisolated public func onWaitingRoomPresetAudioStatusChanged(_ audioCanTurnOn: Bool) {
+    public nonisolated func onWaitingRoomPresetAudioStatusChanged(_ audioCanTurnOn: Bool) {
         Task { @MainActor in
             PrettyLogger.log("[MEETING PRESET AUDIO: \(audioCanTurnOn)]")
         }
     }
-    
-    nonisolated public func onWaitingRoomPresetVideoStatusChanged(_ videoCanTurnOn: Bool) {
+
+    public nonisolated func onWaitingRoomPresetVideoStatusChanged(_ videoCanTurnOn: Bool) {
         Task { @MainActor in
             PrettyLogger.log("[MEETING PRESET VIDEO: \(videoCanTurnOn)]")
         }

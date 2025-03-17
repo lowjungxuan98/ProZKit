@@ -5,11 +5,10 @@
 //  Created by Low Jung Xuan on 13/3/25.
 //
 
-import UIKit
 import MobileRTC
+import UIKit
 
 class WaitingHostViewController: UIViewController {
-
     // UI Elements
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -17,7 +16,7 @@ class WaitingHostViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 24)
@@ -27,7 +26,7 @@ class WaitingHostViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
@@ -37,7 +36,7 @@ class WaitingHostViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     // New Quit Button
     private lazy var quitButton: UIButton = {
         let button: UIButton
@@ -66,53 +65,53 @@ class WaitingHostViewController: UIViewController {
         button.addTarget(self, action: #selector(quitWaiting), for: .touchUpInside)
         return button
     }()
-        
+
     // MARK: - View Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupUI()
     }
-    
+
     // MARK: - UI Setup
-    
+
     private func setupUI() {
         view.addSubview(logoImageView)
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
         view.addSubview(quitButton)
-        
+
         NSLayoutConstraint.activate([
             // Logo ImageView constraints
             logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.widthAnchor.constraint(equalToConstant: 100),
             logoImageView.heightAnchor.constraint(equalToConstant: 100),
-            
+
             // Title Label constraints
             titleLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            
+
             // Description Label constraints
             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            
+
             // Quit Button constraints
             quitButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200),
-            quitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            quitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
-    
+
     // MARK: - Configuration
-    
+
     /// Configures the UI with custom waiting room data.
     func configure(with data: MobileRTCCustomWaitingRoomData) {
         titleLabel.text = data.title
         descriptionLabel.text = data.descriptionString
-        
+
         // If a logo path is provided, attempt to load the image.
         if let logoPath = data.logoPath, let url = URL(string: logoPath) {
             // For simplicity, we load the image synchronously.
@@ -122,9 +121,9 @@ class WaitingHostViewController: UIViewController {
             }
         }
     }
-    
+
     // MARK: - Actions
-    
+
     @objc private func quitWaiting() {
         MobileRTC.shared().getMeetingService()?.leaveMeeting(with: .leave)
         dismiss(animated: true)
