@@ -137,4 +137,8 @@ class CustomMeetingViewController: UIViewController {
             videoView.showAttendeeVideo(withUserID: userID)
         }
     }
+    
+    public func setButtonImage(for buttonType: ButtonType, with image: UIImage?) {
+        callBottomView.setImage(for: buttonType, with: image)
+    }
 }

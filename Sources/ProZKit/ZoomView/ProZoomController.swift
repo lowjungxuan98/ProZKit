@@ -35,6 +35,10 @@ public class ProZoomController: NSObject { // 添加 public
         }
         PrettyLogger.info("初始化成功。")
     }
+    
+    public func setButtonImage(for button: ButtonType, with image: UIImage) {
+        customMeetingVC.setButtonImage(for: button, with: image)
+    }
 
     public func startMeeting(
         _ controller: UIViewController,
