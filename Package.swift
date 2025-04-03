@@ -16,19 +16,19 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/omise/omise-ios.git",
-            exact: "5.3.0"
+            from: "5.5.0"
         ),
         .package(
             url: "https://github.com/firebase/firebase-ios-sdk.git",
-            exact: "11.9.0"
+            from: "11.11.0"
         ),
         .package(
             url: "https://github.com/AgoraIO/AgoraRtcEngine_iOS",
-            exact: "4.5.1"
+            from: "4.5.1"
         ),
         .package(
             url: "https://github.com/nicklockwood/SwiftFormat",
-            from: "0.55.0"
+            from: "0.55.5"
         ),
         .package(
             url: "https://github.com/patchthecode/JTAppleCalendar.git",
@@ -36,7 +36,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/hackiftekhar/IQKeyboardManager.git",
-            from: "8.0.0"
+            from: "8.0.1"
         ),
         .package(
             url: "https://github.com/ProxymanApp/atlantis.git",
