@@ -38,6 +38,10 @@ let package = Package(
             url: "https://github.com/hackiftekhar/IQKeyboardManager.git",
             from: "8.0.0"
         ),
+        .package(
+            url: "https://github.com/ProxymanApp/atlantis.git",
+            from: "1.27.0"
+        ),
     ],
     targets: [
         .binaryTarget(
@@ -86,6 +90,8 @@ let package = Package(
                 .product(name: "ReplayKit", package: "AgoraRtcEngine_iOS"),
                 // IQKeyboardManagerSwift
                 .product(name: "IQKeyboardManagerSwift", package: "IQKeyboardManager"),
+                // Development Tool
+                .product(name: "Atlantis", package: "atlantis"),
             ],
             resources: [
                 .copy("Resources/MobileRTCResources.bundle"),

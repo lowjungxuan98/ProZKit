@@ -12,7 +12,7 @@ import UIKit
 public class AutoLogoutManager {
     public static let shared = AutoLogoutManager()
     
-    /// Timeout interval in seconds
+    /// Timeout interval in seconds.
     private var timeoutInterval: Int = 3600
     
     /// Remaining seconds before auto logout.
@@ -28,16 +28,20 @@ public class AutoLogoutManager {
     public var onLogout: (() -> Void)?
     
     public func initialize(isLogin: Bool? = nil, timeoutInterval: Int = 3600) {
-        self.timeoutInterval = timeoutInterval ?? 3600
+        self.timeoutInterval = timeoutInterval
         remainingSeconds = self.timeoutInterval
+        
+        // Listen for when the application becomes active.
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(resetTimer),
             name: UIApplication.didBecomeActiveNotification,
             object: nil
         )
+        
+        // If user is already logged in, call loginUser.
         if let isLogin = isLogin, isLogin {
-            resetTimer()
+            loginUser()
         }
     }
     
@@ -48,6 +52,10 @@ public class AutoLogoutManager {
     /// Call this method to re-enable the timer when a user logs in.
     public func loginUser() {
         isLoggedOut = false
+        
+        // Store the current login time in UserDefaults.
+        UserDefaults.standard.set(Date(), forKey: "loginTime")
+        
         resetTimer()
     }
     
@@ -58,9 +66,28 @@ public class AutoLogoutManager {
             return
         }
         
+        // Retrieve login time from UserDefaults.
+        guard let loginTime = UserDefaults.standard.object(forKey: "loginTime") as? Date else {
+            // If there is no login time, immediately log out.
+            logoutUser()
+            return
+        }
+        
+        // Calculate elapsed time since login.
+        let elapsedTime = Date().timeIntervalSince(loginTime)
+        let calculatedRemaining = timeoutInterval - Int(elapsedTime)
+        
+        // If the elapsed time exceeds the timeout interval, log out.
+        if calculatedRemaining <= 0 {
+            logoutUser()
+            return
+        }
+        
+        // Update the remaining seconds.
+        remainingSeconds = calculatedRemaining
+        
+        // Invalidate any existing timer and start a new one.
         timer?.invalidate()
-        remainingSeconds = timeoutInterval
-        // Start a repeating timer that fires every second.
         timer = Timer.scheduledTimer(
             timeInterval: 1.0,
             target: self,
@@ -74,6 +101,7 @@ public class AutoLogoutManager {
     @objc private func timerTick() {
         remainingSeconds -= 1
         if remainingSeconds % 10 == 0 {
+            // Log remaining seconds (replace with your logging mechanism as needed).
             PrettyLogger.info("Remaining seconds: \(remainingSeconds)")
         }
         if remainingSeconds <= 0 {
@@ -86,6 +114,10 @@ public class AutoLogoutManager {
         timer?.invalidate()
         timer = nil
         isLoggedOut = true
+        
+        // Optionally clear the stored login time on logout.
+        UserDefaults.standard.removeObject(forKey: "loginTime")
+        
         onLogout?()
     }
     

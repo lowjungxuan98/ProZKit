@@ -38,6 +38,15 @@
       }
     },
     {
+      "identity" : "atlantis",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ProxymanApp/atlantis.git",
+      "state" : {
+        "revision" : "6e1059fdd2cd971e449b5c2f8219274797cd5d69",
+        "version" : "1.27.0"
+      }
+    },
+    {
       "identity" : "firebase-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk.git",
@@ -114,8 +123,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/hackiftekhar/IQKeyboardManager.git",
       "state" : {
-        "revision" : "42e0d94355eba5448fd250f7229d150d268dc3ab",
-        "version" : "8.0.0"
+        "revision" : "555472fdb20a96127643d48d101ef981a40993b6",
+        "version" : "8.0.1"
       }
     },
     {
