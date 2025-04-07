@@ -38,5 +38,9 @@ class LoginViewController: UIViewController {
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+        
+        if let enc = ProZKit.encrypt("LOWJX"), let dec = ProZKit.decrypt(enc) {
+            print(enc, dec)
+        }
     }
 }
